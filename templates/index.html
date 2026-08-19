@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wanderly AI Travel Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Wanderly home">
+          <span class="brand-mark">✈</span>
+          <span>Wanderly</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#planner">Planner</a>
+          <a href="#inspiration">Inspiration</a>
+          <a href="#map">Map</a>
+          <a href="#results">Itinerary</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">☀</button>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero-media" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85" alt="">
+          </div>
+          <div class="hero-content reveal">
+            <p class="eyebrow">AI-powered travel planning</p>
+            <h1>Plan brighter trips in minutes.</h1>
+            <p class="hero-copy">Tell Wanderly where you want to go, and get a clean day-by-day itinerary with places, food, budget, safety, packing, and transport ideas.</p>
+            <a class="primary-action" href="#planner">Start planning</a>
+          </div>
+          <div class="hero-card trending-card float-card">
+            <span>Trending next escapes</span>
+            <button type="button" data-trending-place="Bali">Bali <small>5 days • wellness</small></button>
+            <button type="button" data-trending-place="Jaipur">Jaipur <small>3 days • heritage</small></button>
+            <button type="button" data-trending-place="Dubai">Dubai <small>4 days • luxury</small></button>
+          </div>
+        </section>
+
+        <section class="inspiration" id="inspiration" aria-label="Destination inspiration">
+          <article class="destination-card reveal" tabindex="0" role="button" data-place="Santorini" data-vibe="Islands" data-image="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" data-about="Whitewashed villages, blue domes, cliffside sunsets, and sparkling Aegean views make Santorini feel cinematic from morning to night." data-highlights="Oia sunset|Caldera cruise|Fira lanes|Volcanic beaches">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=80" alt="Santorini coast">
+            <div>
+              <span>Islands</span>
+              <strong>Santorini</strong>
+            </div>
+          </article>
+          <article class="destination-card reveal" tabindex="0" role="button" data-place="Agra" data-vibe="Heritage" data-image="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80" data-about="Agra blends Mughal history, marble artistry, lively bazaars, and warm North Indian flavors into a classic India travel moment." data-highlights="Taj Mahal sunrise|Agra Fort|Mehtab Bagh|Petha tasting">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80" alt="Taj Mahal">
+            <div>
+              <span>Heritage</span>
+              <strong>Agra</strong>
+            </div>
+          </article>
+          <article class="destination-card reveal" tabindex="0" role="button" data-place="Tokyo" data-vibe="City lights" data-image="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=1200&q=80" data-about="Tokyo is neon streets, quiet gardens, precise trains, tiny ramen counters, pop culture, temples, and polished city adventures." data-highlights="Shibuya crossing|Asakusa temple|TeamLab art|Izakaya lanes">
+            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=900&q=80" alt="Japan street and pagoda">
+            <div>
+              <span>City lights</span>
+              <strong>Tokyo</strong>
+            </div>
+          </article>
+          <article class="destination-card reveal" tabindex="0" role="button" data-place="Jaipur" data-vibe="Royal India" data-image="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=1200&q=80" data-about="Jaipur brings palaces, pink streets, forts, textiles, rooftop cafes, and desert warmth together in one colorful city break." data-highlights="Amber Fort|Hawa Mahal|City Palace|Johari Bazaar">
+            <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=900&q=80" alt="Hawa Mahal in Jaipur">
+            <div>
+              <span>Royal India</span>
+              <strong>Jaipur</strong>
+            </div>
+          </article>
+          <article class="destination-card reveal" tabindex="0" role="button" data-place="Bali" data-vibe="Tropical calm" data-image="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80" data-about="Bali is a soft mix of beaches, rice terraces, temples, wellness stays, waterfalls, and slow sunset dinners." data-highlights="Ubud terraces|Uluwatu sunset|Temple hopping|Beach cafes">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80" alt="Bali rice terraces">
+            <div>
+              <span>Tropical calm</span>
+              <strong>Bali</strong>
+            </div>
+          </article>
+          <article class="destination-card reveal" tabindex="0" role="button" data-place="Dubai" data-vibe="Luxury city" data-image="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80" data-about="Dubai is polished skylines, desert evenings, grand malls, beaches, family attractions, and bold architecture in one easy-to-plan trip." data-highlights="Burj Khalifa|Desert safari|Marina walk|Global Village">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" alt="Dubai skyline">
+            <div>
+              <span>Luxury city</span>
+              <strong>Dubai</strong>
+            </div>
+          </article>
+        </section>
+
+        <section class="map-section reveal" id="map">
+          <div class="map-copy">
+            <p class="eyebrow">World map locator</p>
+            <h2>Find the place before you plan it</h2>
+            <p>Search any country, state, or city and Wanderly will open it on Google Maps. Pick a quick chip or type your own destination.</p>
+            <div class="map-search">
+              <input id="mapSearch" type="text" placeholder="Search India, Kerala, Tokyo, Paris...">
+              <button class="primary-action" id="mapSearchButton" type="button">Locate</button>
+            </div>
+            <div class="map-chips">
+              <button type="button" data-map-place="India">India</button>
+              <button type="button" data-map-place="Kerala">Kerala</button>
+              <button type="button" data-map-place="Tokyo">Tokyo</button>
+              <button type="button" data-map-place="Santorini">Santorini</button>
+              <button type="button" data-map-place="Dubai">Dubai</button>
+            </div>
+          </div>
+          <div class="map-frame-wrap">
+            <iframe
+              id="googleMapFrame"
+              title="Google Maps location preview"
+              loading="lazy"
+              src="https://www.google.com/maps?q=World&output=embed">
+            </iframe>
+            <a id="openGoogleMaps" href="https://www.google.com/maps" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+        </section>
+
+        <section class="planner-band" id="planner">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Build your itinerary</p>
+            <h2>Your travel preferences</h2>
+          </div>
+          <form class="planner-form reveal" id="plannerForm">
+            <label>
+              <span>Destination</span>
+              <input name="destination" type="text" placeholder="Paris, Kyoto, Goa..." required>
+            </label>
+            <label>
+              <span>Days</span>
+              <input name="days" type="number" min="1" max="14" value="4" required>
+            </label>
+            <label>
+              <span>Budget</span>
+              <select name="budget">
+                <option>Budget</option>
+                <option selected>Mid-range</option>
+                <option>Luxury</option>
+              </select>
+            </label>
+            <label>
+              <span>Currency</span>
+              <select name="currency" id="currencySelect">
+                <option selected>INR</option>
+                <option>USD</option>
+                <option>EUR</option>
+                <option>GBP</option>
+                <option>AED</option>
+                <option>JPY</option>
+              </select>
+            </label>
+            <label>
+              <span>Total budget</span>
+              <input name="budget_amount" id="budgetAmount" type="number" min="0" step="500" value="50000" required>
+            </label>
+            <div class="budget-preview" id="budgetPreview">Approx. ₹50,000</div>
+            <label>
+              <span>Travellers</span>
+              <input name="travellers" type="number" min="1" max="12" value="2" required>
+            </label>
+            <label class="wide">
+              <span>Travel style</span>
+              <select name="style">
+                <option>Culture</option>
+                <option>Adventure</option>
+                <option>Relaxation</option>
+                <option>Food</option>
+                <option>Family</option>
+                <option>Romantic</option>
+              </select>
+            </label>
+            <button class="primary-action form-button" type="submit">
+              <span class="button-text">Generate itinerary</span>
+              <span class="loader" aria-hidden="true"></span>
+            </button>
+          </form>
+        </section>
+
+        <section class="results-section" id="results" aria-live="polite">
+          <div class="section-heading reveal">
+            <p class="eyebrow">AI itinerary</p>
+            <h2>Your plan appears here</h2>
+          </div>
+          <div class="empty-state reveal" id="emptyState">
+            <strong>Ready when you are.</strong>
+            <p>Fill in your trip details and Wanderly will format the plan into easy cards.</p>
+          </div>
+          <div class="result-grid" id="resultGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="place-modal" id="placeModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <article class="place-dialog" role="dialog" aria-modal="true" aria-labelledby="placeTitle">
+        <button class="modal-close" type="button" aria-label="Close destination popup" data-close-modal>×</button>
+        <img id="placeImage" src="" alt="">
+        <div class="place-dialog-body">
+          <p class="eyebrow" id="placeVibe"></p>
+          <h2 id="placeTitle"></h2>
+          <p id="placeAbout"></p>
+          <div class="highlight-pills" id="placeHighlights"></div>
+          <button class="primary-action" id="planThisPlace" type="button">Plan this place</button>
+        </div>
+      </article>
+    </div>
+
+    <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open Tripzy chat">
+      <span>🧭</span>
+    </button>
+
+    <aside class="chat-panel" id="chatPanel" aria-label="Tripzy travel chat" aria-hidden="true">
+      <header class="chat-header">
+        <div>
+          <span class="chat-avatar">🧭</span>
+          <div>
+            <strong>Tripzy</strong>
+            <small>Your tiny travel buddy</small>
+          </div>
+        </div>
+        <button id="closeChat" type="button" aria-label="Close chat">×</button>
+      </header>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">Welcome to Wanderly! I’m Tripzy, your travel buddy. Tell me a destination or ask about places, food, routes, packing, or your itinerary.</div>
+      </div>
+      <form class="chat-form" id="chatForm">
+        <input name="message" type="text" placeholder="Ask Tripzy..." autocomplete="off" required>
+        <button type="submit" aria-label="Send message">➤</button>
+      </form>
+    </aside>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
